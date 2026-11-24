@@ -11,6 +11,9 @@ This repository contains the complete source code for the professional personal 
 
 Designed from the ground up to reflect a minimalist, elegant, and modern software engineering aesthetic, the website adheres strictly to vanilla **HTML5** and **CSS3** specifications. It demonstrates production-level proficiency in responsive layouts, **CSS Flexbox**, **CSS Grid**, media queries, typography, accessible semantic markup, and cross-device design.
 
+- **Live Website:** [https://kirubakaranmaxi32.github.io/personal-portfolio/](https://kirubakaranmaxi32.github.io/personal-portfolio/)
+- **GitHub Repository:** [https://github.com/Kirubakaranmaxi32/personal-portfolio](https://github.com/Kirubakaranmaxi32/personal-portfolio)
+
 ---
 
 ## 👨‍💻 Developer Information
@@ -22,7 +25,7 @@ Designed from the ground up to reflect a minimalist, elegant, and modern softwar
 - **Institution:** Kangeyam Institute of Technology
 - **Location:** Erode, Tamil Nadu, India
 - **Email:** [mkirubakaranmohanrajj2013@gmail.com](mailto:mkirubakaranmohanrajj2013@gmail.com)
-- **GitHub:** [https://github.com/kirubakaran-ai24](https://github.com/kirubakaran-ai24)
+- **GitHub:** [https://github.com/Kirubakaranmaxi32](https://github.com/Kirubakaranmaxi32)
 - **LinkedIn:** [https://www.linkedin.com/in/kirubakaran-m32/](https://www.linkedin.com/in/kirubakaran-m32/)
 - **LeetCode:** [https://leetcode.com/u/mkirubakaran20/](https://leetcode.com/u/mkirubakaran20/)
 
@@ -61,9 +64,9 @@ The website follows an engineered dark theme built around high-contrast, accessi
 ```
 personal-portfolio/
 │
-├── index.html          # Page 1: Home / Landing Page
+├── index.html          # Page 1: Home / Landing Page with Kirubakaran's Photo
 ├── about.html          # Page 2: About Me, Education & Skills
-├── projects.html       # Page 3: Technical Project Showcase
+├── projects.html       # Page 3: Technical Project Showcase (Clean CSS Cards)
 ├── contact.html        # Page 4: Contact Channels & Form
 │
 ├── css/
@@ -71,8 +74,16 @@ personal-portfolio/
 │
 ├── images/
 │   ├── profile.jpeg    # Authentic professional portrait photograph
-│   ├── profile.jpg     # Preserved photograph link
+│   ├── profile.jpg     # Preserved authentic photograph link
 │   └── projects/       # Projects directory (clean CSS card presentation)
+│
+├── screenshots/        # Verified browser execution screenshots
+│   ├── home-desktop.png
+│   ├── home-mobile.png
+│   ├── about-desktop.png
+│   ├── projects-desktop.png
+│   ├── contact-desktop.png
+│   └── contact-mobile.png
 │
 └── README.md           # Comprehensive project documentation
 ```
@@ -104,7 +115,7 @@ personal-portfolio/
 ### 4. Contact Page (`contact.html`)
 - **Channels:** Direct verified email address (`mkirubakaranmohanrajj2013@gmail.com`), location (Erode, Tamil Nadu, India), and social profiles.
 - **Contact Form:** Semantic form containing Full Name, Email Address, Subject, and Message with HTML5 `required` validation and accessible label pairings.
-- **Static Notice:** Transparent disclaimer notifying users of the static frontend nature of the page.
+- **Static Notice:** Transparent disclaimer notifying users of the static frontend nature of the page and resolution of GitHub Pages HTTP 405 restrictions.
 
 ---
 
@@ -122,15 +133,43 @@ The responsive layout employs fluid measurements (`clamp()`, percentages, `rem`)
 
 ---
 
-## ⚠️ Contact Form Technical Limitation
+## 📸 Visual Verification Screenshots
 
-> **Important Architectural Disclosure:**  
-> This project is engineered exclusively with **HTML5 and CSS3** in accordance with strict internship guidelines prohibiting server runtimes (Node.js, PHP, Python backends).  
-> In pure HTML/CSS, form submission cannot directly dispatch emails or persist messages to a database.  
-> 
-> To enable live production email delivery:
-> 1. Connect the form `action` attribute to an external service like [Formspree](https://formspree.io) (`action="https://formspree.io/f/your_form_id"`), [EmailJS](https://www.emailjs.com), or [Web3Forms](https://web3forms.com).
-> 2. Or implement a backend handler using FastAPI / Node.js.
+All screenshots below represent actual rendered pages captured from Microsoft Edge:
+
+| File Name | Page & Viewport | Dimensions | File Size |
+| :--- | :--- | :---: | :---: |
+| [`screenshots/home-desktop.png`](screenshots/home-desktop.png) | Home Page (Desktop) | 1440 × 900 | 170 KB |
+| [`screenshots/home-mobile.png`](screenshots/home-mobile.png) | Home Page (Mobile) | 390 × 844 | 102 KB |
+| [`screenshots/about-desktop.png`](screenshots/about-desktop.png) | About Page (Desktop) | 1440 × 900 | 53 KB |
+| [`screenshots/projects-desktop.png`](screenshots/projects-desktop.png) | Projects Page (Desktop) | 1440 × 900 | 51 KB |
+| [`screenshots/contact-desktop.png`](screenshots/contact-desktop.png) | Contact Page (Desktop) | 1440 × 900 | 64 KB |
+| [`screenshots/contact-mobile.png`](screenshots/contact-mobile.png) | Contact Page (Mobile) | 390 × 844 | 32 KB |
+
+---
+
+## ⚠️ Contact Form Technical Limitation & GitHub Pages HTTP 405 Resolution
+
+### Why HTTP 405 Occurred on GitHub Pages
+GitHub Pages is a static file hosting environment that serves content strictly over HTTP `GET` and `HEAD` verbs. When a static HTML `<form>` uses `action="#" method="POST"` or points to a `.html` page via POST, submitting the form issues an HTTP `POST` request to GitHub's static web server. Because GitHub Pages does not run a server runtime (e.g. Node.js, Python, or PHP) to parse POST bodies, the server immediately rejects the request with **`HTTP 405 Method Not Allowed`**.
+
+### Pure HTML5 Standards-Compliant Solution
+Under the internship assignment's strict requirement of **HTML5 and CSS3 only** (no JavaScript, no custom backend), the standard compliant approach is:
+```html
+<form class="contact-form" action="mailto:mkirubakaranmohanrajj2013@gmail.com" method="POST" enctype="text/plain">
+```
+- **How it works:** When submitted, the browser executes native HTML5 field validation (`required`, `type="email"`). If valid, it invokes the user's default email client (e.g., Outlook, Apple Mail, Thunderbird, or Webmail handler) pre-filling `mkirubakaranmohanrajj2013@gmail.com`, the subject, and the message body formatted in plain text.
+- **Why it solves HTTP 405:** The `mailto:` protocol is delegated to the operating system's registered mail protocol handler rather than issuing an unsupported HTTP POST to the GitHub Pages static host.
+
+### Optional Automated Endpoint Integration (External Form Service)
+For background submission without invoking an email client, an external form handling service such as [Formspree](https://formspree.io) or [Web3Forms](https://web3forms.com) can be integrated:
+1. Register an account at [Formspree](https://formspree.io).
+2. Create a new form endpoint linked to `mkirubakaranmohanrajj2013@gmail.com` and complete the email verification.
+3. Replace the form `action` attribute with your unique endpoint:
+   ```html
+   <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   ```
+4. Submissions will then be automatically delivered to your inbox without requiring any backend server code or JavaScript.
 
 ---
 
@@ -161,56 +200,30 @@ http://localhost:8000
 
 Follow these step-by-step instructions to push this portfolio to GitHub and publish it live for free via GitHub Pages.
 
-### Step 1: Create a New GitHub Repository
-1. Log in to your GitHub account: [https://github.com/kirubakaran-ai24](https://github.com/kirubakaran-ai24).
-2. Click the **+** icon in the top right corner and select **New repository**.
-3. Repository name: `personal-portfolio` (or `portfolio`).
-4. Visibility: Select **Public**.
-5. Leave "Initialize this repository with a README" **unchecked** (we already have a complete README).
-6. Click **Create repository**.
-
-### Step 2: Initialize Git and Commit Locally
+### Step 1: Push Changes to GitHub Repository
 Open your terminal (PowerShell or Bash) and run:
 ```bash
 # 1. Navigate to your project folder
 cd "c:\Users\kirubakaran\Desktop\PORTFOLIO\personal-portfolio"
 
-# 2. Initialize git repository
-git init
-
-# 3. Add all files to staging
+# 2. Stage all updated files
 git add .
 
-# 4. Create your initial commit
-git commit -m "feat: complete professional 4-page portfolio website for NeuroTech Solutions internship"
+# 3. Create a clean commit
+git commit -m "fix: resolve contact form HTTP 405, update GitHub links to Kirubakaranmaxi32, and update copyright"
 
-# 5. Rename branch to main
-git branch -M main
-
-# 6. Link to your GitHub remote repository (replace with your repo URL)
-git remote add origin https://github.com/kirubakaran-ai24/personal-portfolio.git
-
-# 7. Push code to GitHub
-git push -u origin main
+# 4. Push code to GitHub
+git push origin main
 ```
 
-### Step 3: Enable GitHub Pages
-1. On GitHub, navigate to your repository page (`https://github.com/kirubakaran-ai24/personal-portfolio`).
-2. Click the **Settings** tab (gear icon at the top).
-3. On the left sidebar under the "Code and automation" section, click **Pages**.
-4. Under **Build and deployment** > **Source**, choose **Deploy from a branch**.
-5. Under **Branch**, select `main` from the dropdown and leave the folder as `/ (root)`.
-6. Click **Save**.
-
-### Step 4: Access Your Live Website URL
-1. Wait 1 to 2 minutes for the GitHub Actions deployment workflow to finish.
-2. Refresh the GitHub Pages settings page. You will see a banner:  
-   *“Your site is live at `https://kirubakaran-ai24.github.io/personal-portfolio/`”*
-3. Test your live website in any desktop and mobile browser.
+### Step 2: Access Your Live Website URL
+- **Live URL:** [https://kirubakaranmaxi32.github.io/personal-portfolio/](https://kirubakaranmaxi32.github.io/personal-portfolio/)
+- **Repository URL:** [https://github.com/Kirubakaranmaxi32/personal-portfolio](https://github.com/Kirubakaranmaxi32/personal-portfolio)
 
 ---
 
 ## ⚖️ License & Attribution
 
 Developed by **M. Kirubakaran** as an official internship deliverable for **NeuroTech Solutions**.  
+&copy; 2026 M. Kirubakaran. All rights reserved.  
 All design patterns, semantic markup, and styling are engineered for high maintainability, performance, and accessibility.
