@@ -9,15 +9,12 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Accessible skip to content link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Site Header & Responsive Navigation -->
   <header class="site-header">
     <div class="container header-container">
       <a href="index.html" class="brand-logo" aria-label="M. Kirubakaran Portfolio">KIRUBAKARAN</a>
 
-      <!-- Pure CSS Accessible Mobile Navigation Toggle -->
       <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" aria-label="Toggle navigation menu">
       <label for="nav-toggle" class="nav-toggle-label" aria-controls="primary-navigation">
         <span class="hamburger-line"></span>
@@ -25,7 +22,6 @@
         <span class="hamburger-line"></span>
       </label>
 
-      <!-- Navigation Links -->
       <nav id="primary-navigation" class="nav-menu" aria-label="Main Navigation">
         <a href="index.html" class="nav-link">Home</a>
         <a href="about.html" class="nav-link">About</a>
@@ -35,9 +31,7 @@
     </div>
   </header>
 
-  <!-- Main Content -->
   <main id="main-content">
-    <!-- Page Header Banner -->
     <section class="section page-header-section">
       <div class="container">
         <div class="section-header section-header-compact">
@@ -50,12 +44,10 @@
       </div>
     </section>
 
-    <!-- Contact Content Layout Section -->
     <section class="section section-alt" aria-label="Contact Channels &amp; Inquiry Form">
       <div class="container">
         <div class="contact-layout">
 
-          <!-- Left Column: Direct Contact Information Panel -->
           <div class="contact-info-panel">
             <div class="contact-card">
               <h2 class="contact-card-title">Contact Channels</h2>
@@ -64,7 +56,6 @@
               </p>
 
               <div class="contact-item-group">
-                <!-- Direct Email -->
                 <div class="contact-detail-row">
                   <span class="contact-label">Email Address</span>
                   <span class="contact-value">
@@ -72,13 +63,11 @@
                   </span>
                 </div>
 
-                <!-- Location -->
                 <div class="contact-detail-row">
                   <span class="contact-label">Location</span>
                   <span class="contact-value">Erode, Tamil Nadu, India</span>
                 </div>
 
-                <!-- GitHub -->
                 <div class="contact-detail-row">
                   <span class="contact-label">GitHub</span>
                   <span class="contact-value">
@@ -88,7 +77,6 @@
                   </span>
                 </div>
 
-                <!-- LinkedIn -->
                 <div class="contact-detail-row">
                   <span class="contact-label">LinkedIn</span>
                   <span class="contact-value">
@@ -98,7 +86,6 @@
                   </span>
                 </div>
 
-                <!-- LeetCode -->
                 <div class="contact-detail-row">
                   <span class="contact-label">LeetCode</span>
                   <span class="contact-value">
@@ -110,7 +97,6 @@
               </div>
             </div>
 
-            <!-- Availability & Status Card -->
             <div class="contact-card">
               <h3 class="contact-card-title contact-status-title">Current Status</h3>
               <p class="contact-status-desc">
@@ -122,90 +108,51 @@
             </div>
           </div>
 
-          <!-- Right Column: Accessible Contact Form -->
           <div class="contact-form-card">
             <h2 class="contact-card-title form-heading">Send a Message</h2>
             <p class="form-subtext">
               Please complete the form below. All fields marked with an asterisk (<span class="form-required" aria-hidden="true">*</span>) are mandatory.
             </p>
 
-            <form class="contact-form" action="mailto:mkirubakaranmohanrajj2013@gmail.com" method="POST" enctype="text/plain">
-              <!-- Full Name Field -->
+            <form class="contact-form" action="https://formspree.io/f/mqpqgjok" method="POST">
+
               <div class="form-group">
                 <label for="fullname" class="form-label">
                   <span>Full Name</span>
                   <span class="form-required" aria-label="Required">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="fullname"
-                  name="fullname"
-                  class="form-input"
-                  required
-                  autocomplete="name"
-                  placeholder="e.g. Alex Johnson"
-                >
+                <input type="text" id="fullname" name="fullname" class="form-input" required autocomplete="name" placeholder="e.g. Alex Johnson">
               </div>
 
-              <!-- Email Address Field -->
               <div class="form-group">
                 <label for="email" class="form-label">
                   <span>Email Address</span>
                   <span class="form-required" aria-label="Required">*</span>
                 </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  class="form-input"
-                  required
-                  autocomplete="email"
-                  placeholder="e.g. alex@example.com"
-                >
+                <input type="email" id="email" name="email" class="form-input" required autocomplete="email" placeholder="e.g. alex@example.com">
               </div>
 
-              <!-- Subject Field -->
               <div class="form-group">
                 <label for="subject" class="form-label">
                   <span>Subject</span>
                   <span class="form-required" aria-label="Required">*</span>
                 </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  class="form-input"
-                  required
-                  placeholder="e.g. Project Collaboration / Internship Opportunity"
-                >
+                <input type="text" id="subject" name="subject" class="form-input" required placeholder="e.g. Project Collaboration / Internship Opportunity">
               </div>
 
-              <!-- Message Field -->
               <div class="form-group">
                 <label for="message" class="form-label">
                   <span>Message</span>
                   <span class="form-required" aria-label="Required">*</span>
                 </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  class="form-textarea"
-                  rows="5"
-                  required
-                  placeholder="Share details about your message, idea, or opportunity..."
-                ></textarea>
+                <textarea id="message" name="message" class="form-textarea" rows="5" required placeholder="Share details about your message, idea, or opportunity..."></textarea>
               </div>
 
-              <!-- Transparent Architecture Notice -->
-              <div class="form-notice">
-                <strong>Static Hosting Architecture Notice:</strong> In accordance with strict HTML5 and CSS3 internship requirements on GitHub Pages, this form dispatches directly via standard <code>mailto:</code> to open your email client. Alternatively, for automated background delivery without an application handler, an external form endpoint service such as Formspree (e.g. <code>action="https://formspree.io/f/{your-id}"</code>) can be integrated after creating an account and verifying your recipient email.
-              </div>
-
-              <!-- Submit Button -->
               <button type="submit" class="btn btn-primary btn-submit">
                 <span>Send Message</span>
                 <span aria-hidden="true">&rarr;</span>
               </button>
+
             </form>
           </div>
 
@@ -214,7 +161,6 @@
     </section>
   </main>
 
-  <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
